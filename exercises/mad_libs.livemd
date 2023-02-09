@@ -40,7 +40,11 @@ blank3 = "code"
 Enter your solution below.
 
 ```elixir
+occupation = "wizard"
+plural_noun = "thoughts"
+noun = "magic"
 
+"A programmer is a " <> occupation <> " that turns " <> plural_noun <> " into " <> noun <> "."
 ```
 
 ## String Interpolation Madlib
@@ -65,7 +69,11 @@ blank3 = "foobar"
 Enter your solution below.
 
 ```elixir
+noun_1 = "orange"
+noun_2 = "banana"
+plural_noun = "crayons"
 
+"#{noun_1} and #{noun_2} combined makes #{plural_noun}."
 ```
 
 ## Mark As Completed
