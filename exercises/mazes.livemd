@@ -79,6 +79,8 @@ maze = %{
     }
   }
 }
+
+maze.south.west.south.east.south.east.south
 ```
 
 ## The String Maze
@@ -140,6 +142,8 @@ maze = %{
     }
   }
 }
+
+maze["south"]["east"]["south"]["west"]["south"]["west"]["south"]["east"]["south"]
 ```
 
 ## Bonus: Treasure Map
@@ -185,6 +189,8 @@ treasure_map = %{
     }
   }
 }
+
+treasure_map["south ten paces"][10][:"east three paces"][[1, 2, 3]][{"turn", "right"}][:dig]
 ```
 
 ### (Extra Bonus) Update the Treasure Map
@@ -242,19 +248,22 @@ put_in(
 Enter your solution below.
 
 ```elixir
-treasure_map = %{
-  "south ten paces" => %{
-    10 => %{
-      :"east three paces" => %{
-        [1, 2, 3] => %{
-          {"turn", "right"} => %{
-            :dig => "gold"
+updated_map = %{
+  treasure_map
+  | "south ten paces" => %{
+      10 => %{
+        :"east three paces" => %{
+          [1, 2, 3] => %{
+            {"turn", "right"} => %{
+              :dig => "taken"
+            }
           }
         }
       }
     }
-  }
 }
+
+updated_map["south ten paces"][10][:"east three paces"][[1, 2, 3]][{"turn", "right"}][:dig]
 ```
 
 ## Bonus: Pattern Matching
@@ -262,7 +271,25 @@ treasure_map = %{
 Use pattern matching to bind the `"Exit!"` string to an `exit` variable.
 
 ```elixir
-maze = %{
+%{
+  "south" => %{
+    "east" => %{
+      "south" => %{
+        "west" => %{
+          "south" => %{
+            "west" => %{
+              "south" => %{
+                "east" => %{
+                  "south" => exit
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} = %{
   "south" => %{
     "east" => %{
       "south" => %{
@@ -281,6 +308,8 @@ maze = %{
     }
   }
 }
+
+exit
 ```
 
 ## BONUS: Create Your Own Maze
@@ -294,7 +323,27 @@ at least a 5 * 5 in width and height.
 Enter your solution below.
 
 ```elixir
+floras_maze = %{
+  "south" => %{
+    "east" => %{
+      "south" => %{
+        "west" => %{
+          "south" => %{
+            "west" => %{
+              "south" => %{
+                "east" => %{
+                  "south" => "Escape!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
+floras_maze["south"]["east"]["south"]["west"]["south"]["west"]["south"]["east"]["south"]
 ```
 
 ## Mark As Completed
