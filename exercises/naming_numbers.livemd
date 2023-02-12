@@ -72,7 +72,7 @@ naming_numbers.(1)
 Enter your solution below.
 
 ```elixir
-naming_numbers = fn number -> number -> ""
+naming_numbers = fn number -> number -> 
 ```
 
 ## Numbering Names
