@@ -110,7 +110,13 @@ MultiParamExample.call("argument1", "argument2", "argument3")
 Call the `MutliParamExample` with different arguments.
 
 ```elixir
+defmodule MultiParamExampleAnimals do
+  def call(cat, dog, fish) do
+    IO.inspect(binding(), label: "Called with the following bindings")
+  end
+end
 
+MultiParamExampleAnimals.call("meow", "woof", "bubble")
 ```
 
 ## Internal Module Functions
@@ -308,7 +314,13 @@ end
 Enter your solution below.
 
 ```elixir
+defmodule Languages.Spanish do
+  def greeting do
+    "Hola!"
+  end
+end
 
+Languages.Spanish.greeting()
 ```
 
 ### Nested Modules
@@ -347,15 +359,15 @@ We use the `@` symbol to define a compile-time module attribute.
 
 ```elixir
 defmodule Hero do
-  @name "Spider-Man"
-  @nemesis "Green Goblin"
+  @name "Wanda"
+  @nemesis "Agatha"
 
   def introduce do
     "Hello, my name is #{@name}!"
   end
 
   def catchphrase do
-    "I'm your friendly neighborhood #{@name}!"
+    "I'm your friendly neighbor #{@nemesis}!"
   end
 
   def defeat do
@@ -506,7 +518,27 @@ end
 </details>
 
 ```elixir
+defmodule Math do
+  @moduledoc """
+    Here is some info about the module
+  """
 
+  @doc """
+  here is some info about the function
+  """
+
+  def add(param1, param2) do
+    param1 + param2
+  end
+
+  @doc """
+  here is some info about the other function
+  """
+
+  def add(param1, param2, param3) do
+    param1 + param2 + param3
+  end
+end
 ```
 
 ## Default Arguments
@@ -573,7 +605,13 @@ Greeting.hello("Andrew")
 ```
 
 ```elixir
+defmodule Greeting do
+  def hello(name \\ "kitty") do
+    "Hello, #{name}!"
+  end
+end
 
+Greeting.hello()
 ```
 
 ## Documentation
@@ -687,7 +725,7 @@ Uncomment the following code and evaluate the cell to see an example. Re-comment
 
 ```elixir
 # defmodule DoctestCrash do
-#   @moduledoc """
+# @moduledoc """
 #   DoctestCrash
 
 #   Explains doctest crashes with examples
