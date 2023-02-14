@@ -84,6 +84,7 @@ defmodule RockPaperScissorsLizardSpock do
   """
   def beats?(guess1, guess2) do
   end
+  end
 
   @doc """
   Return "Player 1 Wins!", "Player 2 Wins!", or "Draw" depending on which player guess won.
