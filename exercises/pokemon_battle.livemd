@@ -75,6 +75,9 @@ Pokemon.attack(attacker, defender)
 
 ```elixir
 defmodule Pokemon do
+  @enforce_keys [:name, :type, :health, :attack, :speed]
+  defstruct @enforce_keys
+
   @moduledoc """
   Pokemon
 
@@ -115,6 +118,21 @@ defmodule Pokemon do
     %Pokemon{name: "Bulbasaur", type: :grass, health: 10, attack: 5, speed: 20}
   """
   def attack(attacker, defender) do
+    attacker_type = attacker.type
+    defender_type = defender.type
+    defender_health = defender.health
+    attacker_attack = attacker.attack
+
+    cond do
+      attacker_type == defender_type ->
+        %{defender | health: defender_health - attacker_attack}
+
+      {attacker_type, defender_type} in [{:fire, :grass}, {:grass, :water}, {:water, :fire}] ->
+        %{defender | health: defender_health - 2 * attacker_attack}
+
+      {attacker_type, defender_type} in [{:fire, :water}, {:grass, :fire}, {:water, :grass}] ->
+        %{defender | health: defender_health - attacker.attack / 2}
+    end
   end
 end
 ```
@@ -122,7 +140,8 @@ end
 Consider using the following Elixir cell to test your solution.
 
 ```elixir
-
+attacker = %Pokemon{name: "Charmander", type: :fire, health: 20, attack: 5, speed: 20}
+defender = %Pokemon{name: "Bulbasaur", type: :grass, health: 20, attack: 5, speed: 20}
 ```
 
 ### Pokemon Instances
@@ -173,7 +192,11 @@ Pokemon.attack(charmander, bulbasaur)
 Enter your solution below.
 
 ```elixir
+charmander = %Pokemon{name: "Charmander", type: :fire, health: 20, attack: 10, speed: 20}
+bulbasaur = %Pokemon{name: "Bulbasaur", type: :grass, health: 20, attack: 10, speed: 20}
+squirtle = %Pokemon{name: "Squirtle", type: :water, health: 20, attack: 10, speed: 20}
 
+Pokemon.attack(charmander, bulbasaur)
 ```
 
 ## Mark As Completed
