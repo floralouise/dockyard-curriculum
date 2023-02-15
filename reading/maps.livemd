@@ -193,6 +193,7 @@ map[:hello]
 
 ```elixir
 map = %{hello: "world"}
+map[:hello]
 ```
 
 ### Updating Maps
@@ -253,7 +254,8 @@ todo = %{title: "finish maps exercise", completed: false}
 </details>
 
 ```elixir
-
+todo = %{:title => "finish maps exercises", :completed => false}
+%{todo | completed: true}
 ```
 
 ## Pattern Matching
@@ -276,6 +278,7 @@ This also works with non-atom key maps.
 
 ```elixir
 %{"hello" => world} = %{"hello" => "world"}
+world
 ```
 
 We can only pattern match on the value in the map, not the key. Keys in maps must be **literals** such as atoms, strings, tuples, etc.
@@ -332,7 +335,10 @@ Bind `2` and `4` in the following map to variables `two` and `four`.
 Enter your solution below.
 
 ```elixir
-%{one: 1, two: 2, three: 3, four: 4}
+%{two: two, four: four} = %{one: 1, two: 2, three: 3, four: 4}
+IO.puts(two)
+IO.puts(four)
+# added the IO.puts to check my answer
 ```
 
 ## Further Reading
