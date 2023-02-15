@@ -371,7 +371,7 @@ Use [Enum.map/2](https://hexdocs.pm/elixir/1.12/Enum.html#map/2) to convert a li
 Enter your solution below.
 
 ```elixir
-
+Enum.map(1..10, fn integer -> "#{integer}" end)
 ```
 
 ## Enum.reduce/2 and Enum.reduce/3
@@ -492,7 +492,7 @@ Use [Enum.reduce/3](https://hexdocs.pm/elixir/Enum.html#reduce/3) or [Enum.reduc
 Enter your solution below.
 
 ```elixir
-
+Enum.reduce([2, 4, 6, 8, 10], fn integer, accumulator -> integer + accumulator end)
 ```
 
 ## Enum.filter
@@ -530,7 +530,9 @@ odd_numbers = Enum.filter(1..10, fn integer -> rem(integer, 2) != 0 end)
 Enter your solution below.
 
 ```elixir
-
+even = Enum.filter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], fn integer -> rem(integer, 2) == 0 end)
+odd = Enum.filter(1..10, fn integer -> rem(integer, 2) != 0 end)
+odd
 ```
 
 ## Enum.all?/2
@@ -584,7 +586,9 @@ Enum.all?(1..10_000_000, fn integer -> is_integer(integer) end)
 Use [Enum.all/2](https://hexdocs.pm/elixir/Enum.html#all/2) to determine if all of the `colors` in this list of colors are `:green`. You may change the value of `colors` to experiment with [Enum.all/2](https://hexdocs.pm/elixir/Enum.html#all/2).
 
 ```elixir
-colors = [:green, :green, :red]
+colors = [:green, :green, :pink]
+
+Enum.all?(colors, fn color -> color == :green end)
 ```
 
 ## Enum.any/2
@@ -628,7 +632,9 @@ Enum.any?(1..10_000_000, fn integer -> is_bitstring(integer) end)
 Use [Enum.any/2](https://hexdocs.pm/elixir/Enum.html#any/2) to determine if any of the animals in the `animals` list are `:dogs`. You may change the `animals` list to experiment with [Enum.any/2](https://hexdocs.pm/elixir/Enum.html#any/2).
 
 ```elixir
-[:cats, :dogs, :bears, :lions, :penguins]
+animals = [:cats, :owls, :bears, :lions, :penguins]
+
+Enum.any?(animals, fn animal -> animal == :dogs end)
 ```
 
 ## Enum.count/1
@@ -656,6 +662,7 @@ In the Elixir cell below, count the number of elements in the `collection`. It s
 
 ```elixir
 collection = [1, 2, 3, 4, 5]
+Enum.count(collection)
 ```
 
 ## Enum.find/3
@@ -683,7 +690,8 @@ Enum.find(["h", "e", "l", "l", "o"], 10, fn each -> is_integer(each) end)
 Use [Enum.find/2](https://hexdocs.pm/elixir/Enum.html#find/2) to find the first even integer in this list.
 
 ```elixir
-[1, "2", "three", 4, "five", 6]
+list = [1, "2", "three", 4, "five", 6]
+Enum.find(list, fn even -> is_integer(even) && rem(even, 2) == 0 end)
 ```
 
 ## Enum.random/1
@@ -710,7 +718,19 @@ Enum.map(1..10, fn _ -> Enum.random(0..9) end)
 Enter your solution below.
 
 ```elixir
+a = Enum.random(1..10)
+b = Enum.random(1..10)
+c = Enum.random(1..10)
+d = Enum.random(1..10)
+e = Enum.random(1..10)
+f = Enum.random(1..10)
+g = Enum.random(1..10)
+h = Enum.random(1..10)
+i = Enum.random(1..10)
+j = Enum.random(1..10)
+[a, b, c, d, e, f, g, h, i, j]
 
+Enum.map(1..10, fn _ -> Enum.random(0..9) end)
 ```
 
 ## Capture Operator and Module Functions
