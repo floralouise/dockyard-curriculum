@@ -80,8 +80,11 @@ defmodule Votes do
     0
   """
   def count(votes, vote) do
+    Enum.count(votes, fn choice -> choice == vote end)
   end
 end
+
+Votes.count([:dogs, :dogs, :dogs, :cats, :cats, :birds], :dogs)
 ```
 
 ## Bonus: Voter Tally
