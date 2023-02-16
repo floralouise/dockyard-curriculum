@@ -69,9 +69,17 @@ defmodule Palindrome do
     iex> Palindrome.palindrome?("apples")
     false
   """
+
   def palindrome?(string) do
+    if String.reverse(string) == string do
+      true
+    else
+      false
+    end
   end
 end
+
+Palindrome.palindrome?("hero")
 ```
 
 ## Mark As Completed
