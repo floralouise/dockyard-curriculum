@@ -121,7 +121,9 @@ end
 Enter your solution below.
 
 ```elixir
-
+temperature = 11
+thermometer = if temperature > 10, do: :hot, else: :cold
+thermometer
 ```
 
 ## Clear Control Flow
@@ -266,7 +268,7 @@ We can provide any number of cases. Cases use pattern matching to decide which r
 Return each value from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = %{key: "value"}
 
 case condition do
   :red -> 1
@@ -366,7 +368,7 @@ end
 Return each result from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = %{key1: 3, key2: "value"}
 
 case condition do
   [1, 2, 3] -> 1
@@ -505,7 +507,14 @@ end
 </details>
 
 ```elixir
+grade = 99
 
+cond do
+  grade >= 85 and temperature <= 100 -> "A"
+  grade >= 70 and temperature <= 84 -> "B"
+  grade >= 55 and temperature <= 69 -> "C"
+  grade >= 1 and temperature <= 54 -> "D"
+end
 ```
 
 ## Unless
@@ -559,7 +568,11 @@ In the Elixir cell below
 * Create an `unless` statement. which returns `"awake"` unless `tired`.
 
 ```elixir
+tired = false
 
+unless tired do
+  "awake"
+end
 ```
 
 ## Mark As Completed
