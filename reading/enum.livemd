@@ -845,3 +845,7 @@ If you are interested in joining the next academy cohort, [sign up here](https:/
 | Previous                           | Next                                     |
 | ---------------------------------- | ---------------------------------------: |
 | [Ranges](../reading/ranges.livemd) | [FizzBuzz](../exercises/fizzbuzz.livemd) |
+
+```elixir
+u
+```
