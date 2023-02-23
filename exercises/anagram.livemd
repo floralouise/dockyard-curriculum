@@ -46,42 +46,19 @@ end
 ```elixir
 defmodule Anagram do
   def anagram?(string1, string2) do
-    sort_letters(string1) == sort_letters(string2)
+    sort_string(string1) == sort_string(string2)
   end
 
-  def filter_anagrams(word_list, word) do
-    Enum.filter(word_list, fn word -> anagram?(word, string) end)
-    
+  defp sort_string(string) do
+    String.split(string, "", trim: true) |> Enum.sort()
   end
 
-  defp split_list(list)
-
-end
-
-  defp sort_letters(string) do
-    String.split(string, "", trim: true) |> Enum.sort() 
+  def filter_anagrams(words, string) do
+    Enum.filter(words, fn word -> anagram?(word, string) end)
   end
 end
 
-Anagram.filter_anagrams?("ybe", "bye")
-
-|> Enum.chunk_every(1, 1)
-
-Enum.reject(["ybe", "bye", "ybe"], fn x -> x == "bye" end)
-
-word_list = ["ybe", "bye", "ybe"]
-
-|> MapSet.new()
-|> Enum.dedup()
-|> Enum.sort()
-
-String.split(string, "", trim: true)
-```
-
-```elixir
-Enum.map(["ybe", "bye", "ybe"], fn x -> String.split(x, "", trim: true) end)
-|> Enum.map(fn x -> Enum.sort(x) end)
-|> Enum.filter(fn x -> x == "y" end)
+Anagram.filter_anagrams(["bored", "obred", "nope", "hello"], "robed")
 ```
 
 ## Bonus: Anagram Solver
