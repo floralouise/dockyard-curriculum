@@ -22,6 +22,8 @@ Represent each book as a `Book` struct with `title` key. Then create a `Book.sea
 
 ```elixir
 defmodule Book do
+  defstruct [:title]
+end
   @moduledoc """
   Documentation for `Book`.
 
@@ -61,6 +63,61 @@ defmodule Book do
   def search(books, query) do
   end
 end
+```
+
+```elixir
+defmodule Book do
+ 
+  defstruct [:title]
+end
+
+
+  @doc """
+  Search a list of Book structs. Search should match any book that includes the
+  filter in their title.
+
+  ## Examples
+
+  Include books that exactly match the search query.
+
+    iex> book1 = %Book{title: "A"}
+    iex> book2 = %Book{title: "B"}
+    iex> book3 = %Book{title: "C"}
+    iex> Book.search([book1, book2, book3], "A")
+    [%Book{title: "A"}]
+
+  Include books that partially match the search query.
+
+    iex> Book.search([%Book{title: "ABC"}], "A")
+    [%Book{title: "ABC"}]
+
+    iex> Book.search([%Book{title: "BAC"}], "A")
+    [%Book{title: "BAC"}]
+
+  Search should be case insensitive.
+
+    iex> Book.search([%Book{title: "ABC"}], "a")
+    [%Book{title: "ABC"}]
+  """
+  def search(books, query) do
+
+ def anagram?(string1, string2) do
+    sort_string(string1) == sort_string(string2)
+  end
+
+   defp sort_string(string) do
+    String.split(string, "", trim: true) |> Enum.sort()
+  end
+    
+  def filter_anagrams(words, string) do
+    Enum.filter(words, fn word -> anagram?(word, string) end)
+  end
+
+  end
+end
+end
+
+Book.search([%Book{title: "BAC"}], "A")
 ```
 
 ## Mark As Completed
