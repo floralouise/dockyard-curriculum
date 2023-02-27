@@ -83,10 +83,26 @@ defmodule RockPaperScissorsLizardSpock do
     false
   """
   def beats?(guess1, guess2) do
+    if {guess1, guess2} in [
+         {:rock, :scissors},
+         {:paper, :rock},
+         {:scissors, :paper},
+         {:rock, :lizard},
+         {:lizard, :spock},
+         {:spock, :scissors},
+         {:scissors, :lizard},
+         {:lizard, :paper},
+         {:paper, :spock},
+         {:spock, :rock}
+       ] do
+      "true"
+    else
+      "false"
+    end
   end
 
   @doc """
-  Return "Player 1 Wins!", "Player 2 Wins!", or "Draw" depending on which player guess won.
+  Return "Player 1 Wins!"; "Player 2 Wins!", or "Draw" depending on which player guess won.
 
   ## Examples
 
@@ -100,8 +116,33 @@ defmodule RockPaperScissorsLizardSpock do
     "Draw"
   """
   def play(player1, player2) do
+    cond do
+      player1 == player2 ->
+        "Draw!"
+
+      {player1, player2} in [
+        {:rock, :scissors},
+        {:paper, :rock},
+        {:scissors, :paper},
+        {:rock, :lizard},
+        {:lizard, :spock},
+        {:spock, :scissors},
+        {:scissors, :lizard},
+        {:lizard, :paper},
+        {:paper, :spock},
+        {:spock, :rock}
+      ] ->
+        "Player 1 Wins!"
+
+      true ->
+        "Player 2 Wins!"
+    end
   end
 end
+```
+
+```elixir
+RockPaperScissorsLizardSpock.play(:rock, :lizard)
 ```
 
 ## Mark As Completed

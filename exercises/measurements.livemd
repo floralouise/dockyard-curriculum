@@ -70,6 +70,8 @@ defmodule Measurements do
     1
   """
   def increased(measurements) do
+    Enum.reduce(measurements, fn element, accumulator -> if accumulator > element do 1 + accumulator)
+    Enum.count(measurements, fn int x -> element + accumulator)
   end
 
   @doc """

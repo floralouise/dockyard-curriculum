@@ -57,7 +57,11 @@ end
 Enter your solution below.
 
 ```elixir
-
+for names <- ["Clifford", "Zoboomafoo", "Leonardo"],
+    animal_types <- ["dog", "lemur", "turtle"],
+    ages <- 1..14 do
+  %{name: names, animal_type: animal_types, age: ages}
+end
 ```
 
 ## Mark As Completed

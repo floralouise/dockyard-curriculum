@@ -45,47 +45,20 @@ end
 
 ```elixir
 defmodule Anagram do
-  @moduledoc """
-  Documentation for `Anagram`.
-  """
-
-  @doc """
-  Determine if two strings are anagrams.
-
-  ## Examples
-
-    iex> Anagram.anagram?("abc", "bac")
-    true
-
-    iex> Anagram.anagram?("sit", "its")
-    true
-
-    iex> Anagram.anagram?("cats", "dogs")
-    false
-
-    iex> Anagram.anagram?("robed", "bored")
-    true
-  """
   def anagram?(string1, string2) do
+    sort_string(string1) == sort_string(string2)
   end
 
-  @doc """
-  Filter anagrams.
+  defp sort_string(string) do
+    String.split(string, "", trim: true) |> Enum.sort()
+  end
 
-  ## Examples
-
-    iex> Anagram.filter_anagrams(["abc", "bca", "abcd", "cat"], "bac")
-    ["abc", "bca"]
-
-    iex> Anagram.filter_anagrams(["rams", "mars", "arms", "alarms"], "arms")
-    ["rams", "mars", "arms"]
-
-    iex> Anagram.filter_anagrams(["stop"], "go")
-    []
-  """
-  def filter_anagrams(word_list, anagram) do
+  def filter_anagrams(words, string) do
+    Enum.filter(words, fn word -> anagram?(word, string) end)
   end
 end
+
+Anagram.filter_anagrams(["bored", "obred", "nope", "hello"], "robed")
 ```
 
 ## Bonus: Anagram Solver
